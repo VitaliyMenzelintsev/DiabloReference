@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))]
-
 public class MouseInput : MonoBehaviour
 {
     private Vector3 _clickPosition;
-    PlayerController PlayerController;
+    PlayerMovement PlayerMovement;
 
     private void Start()
     {
-        PlayerController = GetComponent<PlayerController>();
+        PlayerMovement = GetComponent<PlayerMovement>();
     }
 
     private void Update()
@@ -19,6 +17,10 @@ public class MouseInput : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             LockatePosition();
+        }
+        else
+        {
+            PlayerMovement.StayInPosition();
         }
     }
 
@@ -30,8 +32,7 @@ public class MouseInput : MonoBehaviour
         if(Physics.Raycast(_ray, out _hit))
         {
             _clickPosition = new Vector3(_hit.point.x, _hit.point.y, _hit.point.z);
-            Debug.Log(_clickPosition);
         }
-        PlayerController.LookDirection(_clickPosition);
+        PlayerMovement.LookDirection(_clickPosition);
     }
 }
