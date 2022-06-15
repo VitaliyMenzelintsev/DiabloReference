@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    private Vector3 _clickPosition;
     public LayerMask MovementMask;
+    public Interactable Focus;
     PlayerMovement PlayerMovement;
 
     private void Start()
@@ -21,30 +19,44 @@ public class PlayerInput : MonoBehaviour
         }
         if (Input.GetMouseButton(1))
         {
-            LockatePosition();
+            FocusOnTarget();
         }
     }
 
     private void LockatePosition()  // сделать отдельный метод, который пускает луч и выдаёт точку попадания
     {
-        RaycastHit _hit;
         Ray _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if(Physics.Raycast(_ray, out _hit, 100, MovementMask))
+        if(Physics.Raycast(_ray, out RaycastHit _hit, 100, MovementMask))
         {
-            _clickPosition = _hit.point;
-            PlayerMovement.MoveToPoint(_clickPosition);
+            PlayerMovement.MoveToPoint(_hit.point);
+            RemoveFocus();
         }
     }
 
     private void FocusOnTarget()
     {
-        RaycastHit _hit;
         Ray _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(_ray, out _hit, 100))
+        if (Physics.Raycast(_ray, out RaycastHit _hit, 100))
         {
-            _clickPosition = _hit.point;
+            Interactable interactable = _hit.collider.GetComponent<Interactable>();
+            if(interactable != null)
+            {
+                SetFocus(interactable);
+            }
         }
+    }
+
+    private void SetFocus(Interactable _focusTarget)
+    {
+        Focus = _focusTarget;
+        PlayerMovement.FollowToTarget(_focusTarget);
+    }
+
+    private void RemoveFocus()
+    {
+        Focus = null;
+        PlayerMovement.StopFollowToTarget();
     }
 }
