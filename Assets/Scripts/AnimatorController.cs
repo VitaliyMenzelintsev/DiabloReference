@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerAnimator : MonoBehaviour
+public class AnimatorController : MonoBehaviour
 {
     const float LocomotionAnimationSmoothTime = 0.1f;
 
