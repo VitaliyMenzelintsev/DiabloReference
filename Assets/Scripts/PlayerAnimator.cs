@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MouseInput))]
+[RequireComponent(typeof(PlayerInput))]
 
 public class PlayerAnimator : MonoBehaviour
 {
@@ -11,11 +11,11 @@ public class PlayerAnimator : MonoBehaviour
 
     public void Running()
     {
-        GetComponent<Animation>().Play(RunAnimation.name);
+        GetComponent<Animation>().CrossFade(RunAnimation.name);
     }
 
     public void Idle()
     {
-        GetComponent<Animation>().Play(IdleAnimation.name);
+        GetComponent<Animation>().CrossFade(IdleAnimation.name);
     }
 }
