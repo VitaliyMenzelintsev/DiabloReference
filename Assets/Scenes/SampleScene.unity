@@ -1303,7 +1303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466878337}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.34, y: 0, z: 12.58}
+  m_LocalPosition: {x: 24.98, y: 0, z: 12.58}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2823,7 +2823,7 @@ GameObject:
   - component: {fileID: 1840779556}
   - component: {fileID: 1840779555}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2841,7 +2841,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a16e4d0a61d4d774488e526bd34e5b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
+  InteractiveRadius: 1
+  InteractableTransform: {fileID: 1840779559}
 --- !u!135 &1840779556
 SphereCollider:
   m_ObjectHideFlags: 0

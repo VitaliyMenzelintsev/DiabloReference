@@ -4,9 +4,9 @@ public class CameraController : MonoBehaviour
 {
 	public Transform target;
 
-	private float _basicZoom = 1f;
-	private float _maxZoom = 1.2f;
-	private float _minZoom = .7f;
+	private float _basicZoom = 1.2f;
+	private float _maxZoom = 1.4f;
+	private float _minZoom = 0.9f;
 	private float _rotateSpeed = 70;
 	private float _zoomSensitivity = .7f;
 	private float _cameraDistantance = 8f;

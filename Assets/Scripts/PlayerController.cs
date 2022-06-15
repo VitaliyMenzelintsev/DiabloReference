@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public LayerMask MovementMask;
     public Interactable Focus;
@@ -50,12 +50,20 @@ public class PlayerInput : MonoBehaviour
 
     private void SetFocus(Interactable _focusTarget)
     {
-        Focus = _focusTarget;
-        PlayerMovement.FollowToTarget(_focusTarget);
+        if(_focusTarget != Focus)
+        {
+            if (Focus != null) Focus.OnUnFocused();
+            
+            Focus = _focusTarget;
+            PlayerMovement.FollowToTarget(_focusTarget);
+        }
+        _focusTarget.OnFocused(transform);
     }
 
     private void RemoveFocus()
     {
+        if(Focus != null) Focus.OnUnFocused();
+
         Focus = null;
         PlayerMovement.StopFollowToTarget();
     }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(NavMeshAgent))]
 
 public class PlayerMovement : MonoBehaviour
@@ -31,9 +31,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void FollowToTarget(Interactable _newTarget)
     {
-        Agent.stoppingDistance = _newTarget.radius * 0.8f;
+        Agent.stoppingDistance = _newTarget.InteractiveRadius * 0.8f;
         Agent.updateRotation = false;
-        _target = _newTarget.transform;
+        _target = _newTarget.InteractableTransform;
     }
 
     public void StopFollowToTarget()
