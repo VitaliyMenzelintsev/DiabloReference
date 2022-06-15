@@ -9,7 +9,6 @@ using UnityEngine.AI;
 public class PlayerMovement : MonoBehaviour
 {
     private float _speed = 5f;
-    public CharacterController CharacterController;
     Camera MainCamera;
     NavMeshAgent Agent;
 

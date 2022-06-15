@@ -2,47 +2,44 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-
 	public Transform target;
 
-	public Vector3 offset;
-	public float smoothSpeed = 2f;
+	private float smoothSpeed = 2f;
+	private float _basicZoom = 1f;
+	private float _maxZoom = 1.2f;
+	private float _minZoom = .7f;
+	private float _rotateSpeed = 70;
+	private float _zoomSensitivity = .7f;
+	private float _cameraDistantance = 8f;
 
-	public float currentZoom = 1f;
-	public float maxZoom = 3f;
-	public float minZoom = .3f;
-	public float yawSpeed = 70;
-	public float zoomSensitivity = .7f;
-	float _distantance;
+	private float zoomSmoothV;
+	private float _targetZoom;
 
-	float zoomSmoothV;
-	float targetZoom;
-
-	void Start()
+	private void Start()
 	{
-		_distantance = offset.magnitude;
 		transform.LookAt(target);
-		targetZoom = currentZoom;
+		_targetZoom = _basicZoom;
 	}
 
-	void Update()
+	private void Update()
 	{
-		float scroll = Input.GetAxisRaw("Mouse ScrollWheel") * zoomSensitivity;
+		// перекинуть в инпут, а здесь только обрабатывать запрос
+		float _scroll = Input.GetAxisRaw("Mouse ScrollWheel") * _zoomSensitivity;
 
-		if (scroll != 0f)
+		if (_scroll != 0f)
 		{
-			targetZoom = Mathf.Clamp(targetZoom - scroll, minZoom, maxZoom);
+			_targetZoom = Mathf.Clamp(_targetZoom - _scroll, _minZoom, _maxZoom);
 		}
-		currentZoom = Mathf.SmoothDamp(currentZoom, targetZoom, ref zoomSmoothV, .15f);
+		_basicZoom = Mathf.SmoothDamp(_basicZoom, _targetZoom, ref zoomSmoothV, .15f);
 	}
 
-	void LateUpdate()
+	private void LateUpdate()
 	{
-		transform.position = target.position - transform.forward * _distantance * currentZoom;
+		transform.position = target.position - transform.forward * _cameraDistantance * _basicZoom;
 		transform.LookAt(target.position);
 
-		float yawInput = Input.GetAxisRaw("Horizontal");
-		transform.RotateAround(target.position, Vector3.up, -yawInput * yawSpeed * Time.deltaTime);
+		float _rotateInput = Input.GetAxisRaw("Horizontal");
+		transform.RotateAround(target.position, Vector3.up, -_rotateInput * _rotateSpeed * Time.deltaTime);
 	}
 
 }
