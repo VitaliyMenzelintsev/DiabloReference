@@ -5,11 +5,12 @@ public class PlayerController : MonoBehaviour
 {
     public LayerMask MovementMask;
     public Interactable Focus;
-    PlayerMovement PlayerMovement;
+
+    private PlayerMovement _playerMovement;
 
     private void Start()
     {
-        PlayerMovement = GetComponent<PlayerMovement>();
+        _playerMovement = GetComponent<PlayerMovement>();
     }
 
     private void Update()
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
         if(Physics.Raycast(_ray, out RaycastHit _hit, 100, MovementMask))
         {
-            PlayerMovement.MoveToPoint(_hit.point);
+            _playerMovement.MoveToPoint(_hit.point);
             RemoveFocus();
         }
     }
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
             if (Focus != null) Focus.OnUnFocused();
             
             Focus = _focusTarget;
-            PlayerMovement.FollowToTarget(_focusTarget);
+            _playerMovement.FollowToTarget(_focusTarget);
         }
         _focusTarget.OnFocused(transform);
     }
@@ -66,6 +67,6 @@ public class PlayerController : MonoBehaviour
         if(Focus != null) Focus.OnUnFocused();
 
         Focus = null;
-        PlayerMovement.StopFollowToTarget();
+        _playerMovement.StopFollowToTarget();
     }
 }

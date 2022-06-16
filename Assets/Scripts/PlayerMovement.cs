@@ -6,40 +6,40 @@ using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Transform _target;
-    NavMeshAgent Agent;
+    private Transform _target;
+    private NavMeshAgent _navMeshAgent;
 
 
     public void Start()
     {
-        Agent = GetComponent<NavMeshAgent>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
         if(_target != null)
         {
-            Agent.SetDestination(_target.position);
+            _navMeshAgent.SetDestination(_target.position);
             FaceToTarget();
         }
     }
 
     public void MoveToPoint(Vector3 _point)
     {
-        Agent.SetDestination(_point);
+        _navMeshAgent.SetDestination(_point);
     }
 
     public void FollowToTarget(Interactable _newTarget)
     {
-        Agent.stoppingDistance = _newTarget.InteractiveRadius * 0.8f;
-        Agent.updateRotation = false;
+        _navMeshAgent.stoppingDistance = _newTarget.InteractiveRadius * 0.8f;
+        _navMeshAgent.updateRotation = false;
         _target = _newTarget.InteractableTransform;
     }
 
     public void StopFollowToTarget()
     {
-        Agent.stoppingDistance = 0f;
-        Agent.updateRotation = true;
+        _navMeshAgent.stoppingDistance = 0f;
+        _navMeshAgent.updateRotation = true;
         _target = null;
     }
 

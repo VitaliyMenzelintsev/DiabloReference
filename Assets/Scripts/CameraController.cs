@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-	public Transform target;
+	public Transform Target;
 
 	private float _basicZoom = 1.2f;
 	private float _maxZoom = 1.4f;
@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
 
 	private void Start()
 	{
-		transform.LookAt(target);
+		transform.LookAt(Target);
 		_targetZoom = _basicZoom;
 	}
 
@@ -32,10 +32,10 @@ public class CameraController : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		transform.position = target.position - transform.forward * _cameraDistantance * _basicZoom;
-		transform.LookAt(target.position);
+		transform.position = Target.position - transform.forward * _cameraDistantance * _basicZoom;
+		transform.LookAt(Target.position);
 
 		float _rotateInput = Input.GetAxisRaw("Horizontal");
-		transform.RotateAround(target.position, Vector3.up, -_rotateInput * _rotateSpeed * Time.deltaTime);
+		transform.RotateAround(Target.position, Vector3.up, -_rotateInput * _rotateSpeed * Time.deltaTime);
 	}
 }

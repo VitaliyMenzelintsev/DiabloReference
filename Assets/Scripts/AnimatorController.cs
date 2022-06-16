@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,19 +5,19 @@ public class AnimatorController : MonoBehaviour
 {
     const float LocomotionAnimationSmoothTime = 0.1f;
 
-    Animator CharacterAnimator;
-    NavMeshAgent NavMeshAgent;
+    private Animator _characterAnimator;
+    private NavMeshAgent _navMeshAgent;
 
     private void Start()
     {
-        CharacterAnimator = GetComponent<Animator>(); // если аниматор висит не на родительском обьекте, а на дочерней графике нужно использовать GetComponentInChildren
-        NavMeshAgent = GetComponent<NavMeshAgent>(); 
+        _characterAnimator = GetComponent<Animator>(); // если аниматор висит не на родительском обьекте, а на дочерней графике нужно использовать GetComponentInChildren
+        _navMeshAgent = GetComponent<NavMeshAgent>(); 
     }
 
     private void Update()
     {
-        float _speedPercent = NavMeshAgent.velocity.magnitude / CharacterAnimator.speed;
-        CharacterAnimator.SetFloat("speedPercent", _speedPercent, LocomotionAnimationSmoothTime, Time.deltaTime);
+        float _speedPercent = _navMeshAgent.velocity.magnitude / _characterAnimator.speed;
+        _characterAnimator.SetFloat("speedPercent", _speedPercent, LocomotionAnimationSmoothTime, Time.deltaTime);
     }
 
     public void Running()

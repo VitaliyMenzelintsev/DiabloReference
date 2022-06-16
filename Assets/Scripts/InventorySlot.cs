@@ -31,5 +31,11 @@ public class InventorySlot : MonoBehaviour
         Inventory.Instance.Remove(_item);
     }
 
-
+    public void UseItem()
+    {
+        if(_item != null)
+        {
+            _item.Use();
+        }
+    }
 }
