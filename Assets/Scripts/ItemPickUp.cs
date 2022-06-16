@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 // класс отвечает за способность предмета браться в инвентарь
 public class ItemPickUp : Interactable
 {

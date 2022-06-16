@@ -5,10 +5,10 @@ public class Interactable : MonoBehaviour
     public float InteractiveRadius = 1f;
     public Transform InteractableTransform;
 
-    private bool isFocused = false;
-    private bool hasInteracted = false;
+    private bool _isFocused = false;
+    private bool _hasInteracted = false;
 
-    Transform player;
+    private Transform _player;
 
     public virtual void Interact()
     {
@@ -17,29 +17,29 @@ public class Interactable : MonoBehaviour
 
     private void Update()
     {
-        if (isFocused && !hasInteracted)
+        if (_isFocused && !_hasInteracted)
         {
-            float _distance = Vector3.Distance(player.position, InteractableTransform.position);
+            float _distance = Vector3.Distance(_player.position, InteractableTransform.position);
             if(_distance <= InteractiveRadius)
             {
                 Interact();
-                hasInteracted = true;
+                _hasInteracted = true;
             }
         }
     }
 
-    public void OnFocused(Transform playerTransform)
+    public void OnFocused(Transform _playerTransform)
     {
-        isFocused = true;
-        player = playerTransform;
-        hasInteracted = false;
+        _isFocused = true;
+        _player = _playerTransform;
+        _hasInteracted = false;
     }
 
     public void OnUnFocused()
     {
-        isFocused = false;
-        player = null;
-        hasInteracted = false;
+        _isFocused = false;
+        _player = null;
+        _hasInteracted = false;
     }
 
     private void OnDrawGizmosSelected()

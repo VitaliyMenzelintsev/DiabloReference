@@ -26,19 +26,18 @@ public class Inventory : MonoBehaviour
     public OnItemChanged OnItemChangedCallBack;
 
     public int Capacity = 20;
-
     public List<Item> Items = new List<Item>();
 
-    public bool Add(Item Item)
+    public bool Add(Item _item)
     {
-        if (!Item.IsDefaultItem)
+        if (!_item.IsDefaultItem)
         {
             if(Items.Count >= Capacity)
             {
                 Debug.Log("inventory full");
                 return false;
             }
-            Items.Add(Item);
+            Items.Add(_item);
 
             if(OnItemChangedCallBack != null)   // внесение изменений в инвентарь
                 OnItemChangedCallBack.Invoke();
@@ -46,9 +45,9 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    public void Remove(Item Item)
+    public void Remove(Item _item)
     {
-        Items.Remove(Item);
+        Items.Remove(_item);
 
         if (OnItemChangedCallBack != null)  // внесение изменений в инвентарь
             OnItemChangedCallBack.Invoke();

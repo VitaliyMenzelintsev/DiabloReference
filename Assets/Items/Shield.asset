@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365c75dbfd7cc1a4ea62b597f5265ea3, type: 3}
+  m_Name: Shield
+  m_EditorClassIdentifier: 
+  name: PlaceHolder Shield
+  Icon: {fileID: 21300000, guid: 5eddfe62462a940468e9c580f8844b1a, type: 3}
+  IsDefaultItem: 0
