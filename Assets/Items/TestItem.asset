@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365c75dbfd7cc1a4ea62b597f5265ea3, type: 3}
   m_Name: TestItem
   m_EditorClassIdentifier: 
-  name: Name
+  name: Helmet of Protection
   Icon: {fileID: 0}
   IsDefaultItem: 0
