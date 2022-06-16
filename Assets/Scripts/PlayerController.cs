@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerController : MonoBehaviour
@@ -15,14 +16,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;            // проверка, нет ли между курсором и поверхностью UI
+
         if (Input.GetMouseButton(0))
-        {
             LockatePosition();
-        }
+
         if (Input.GetMouseButton(1))
-        {
             FocusOnTarget();
-        }
     }
 
     private void LockatePosition()  // сделать отдельный метод, который пускает луч и выдаёт точку попадания

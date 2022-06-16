@@ -3,6 +3,7 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     public Transform ItemsParent;
+    public GameObject ObjectInventoryUI;
 
     private Inventory _inventory;
 
@@ -16,6 +17,13 @@ public class InventoryUI : MonoBehaviour
         _slots = ItemsParent.GetComponentsInChildren<InventorySlot>();
     }
 
+    private void Update()
+    {
+        if (Input.GetButtonDown("Inventory")) // вкл/выкл инвентарь
+        {
+            ObjectInventoryUI.SetActive(!ObjectInventoryUI.activeSelf);
+        }
+    }
 
     private void UpdateUI()
     {
