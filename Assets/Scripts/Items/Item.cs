@@ -9,8 +9,13 @@ public class Item : ScriptableObject
 
     public virtual void Use()
     {
-        // у рахных групп предметов реализация должна быть разной
+        // у разных групп предметов реализация должна быть разной
 
         Debug.Log("Using" + name);
+    }
+
+    public void RemoveFromInventory()
+    {
+        Inventory.Instance.Remove(this);
     }
 }

@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 365c75dbfd7cc1a4ea62b597f5265ea3, type: 3}
-  m_Name: Helmet
+  m_Script: {fileID: 11500000, guid: 202d1eea89e0f2a4ea9e328f7e385c36, type: 3}
+  m_Name: SwordOfDestiny
   m_EditorClassIdentifier: 
-  name: Helmet of Protection
-  Icon: {fileID: 21300000, guid: 67357024bcb1a8245aa806a79237d8eb, type: 3}
+  name: SwordOfDestiny
+  Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   IsDefaultItem: 0
+  EquipSlot: 3
+  ArmorModifier: 0
+  DamageModifier: 3
