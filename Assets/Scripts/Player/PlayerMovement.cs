@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void StopFollowToTarget()
     {
-        _navMeshAgent.stoppingDistance = 0f;
+        _navMeshAgent.stoppingDistance = 0.5f;
         _navMeshAgent.updateRotation = true;
         _target = null;
     }
