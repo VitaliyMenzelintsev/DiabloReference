@@ -19,14 +19,4 @@ public class AnimatorController : MonoBehaviour
         float _speedPercent = _navMeshAgent.velocity.magnitude / _characterAnimator.speed;
         _characterAnimator.SetFloat("speedPercent", _speedPercent, LocomotionAnimationSmoothTime, Time.deltaTime);
     }
-
-    public void Running()
-    {
-
-    }
-
-    public void Idle()
-    {
-
-    }
 }

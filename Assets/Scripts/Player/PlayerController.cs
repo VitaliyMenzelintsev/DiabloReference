@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
             FocusOnTarget();
     }
 
-    private void LockatePosition()  // сделать отдельный метод, который пускает луч и выдаёт точку попадания
+    private void LockatePosition()  
     {
         Ray _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
